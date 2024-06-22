@@ -1,0 +1,23 @@
+<div class="bg-white p-8">
+  <p class="text-gray-500 sm:w-2/3 mx-auto mb-8">
+    <% if  @joke %>
+      <%= @joke.content%>
+    <% else %>
+      That's all the jokes for today! Come back another day!
+    <% end %>
+  </p>
+  <% if  @joke %>
+    <hr class="w-2/3 mx-auto hidden sm:block">
+
+    <div class="mt-8 flex justify-center space-x-4">
+      <%= link_to 'This is Funny!', like_joke_path(@joke),
+          class: 'bg-[#2c7edb] p-2 sm:p-3 text-white w-64 text-center',
+          data: { turbo_method: :patch }
+      %>
+      <%= link_to 'This is not funny.', dislike_joke_path(@joke),
+          class: 'bg-[#29b363] p-2 sm:p-3 text-white w-64 text-center',
+          data: { turbo_method: :patch }
+      %>
+    </div>
+  <% end %>
+</div>
